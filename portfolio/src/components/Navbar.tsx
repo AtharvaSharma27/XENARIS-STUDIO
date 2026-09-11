@@ -6,9 +6,20 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         
         {/* Logo */}
-        <Link to="/" className="text-xl md:text-2xl font-black tracking-tight flex items-center gap-2 text-[var(--color-text-light)]">
-          <span className="font-display italic">Xenaris</span>
-          <span className="font-sans font-medium text-[var(--color-accent)]">Studios</span>
+        <Link to="/" className="flex items-center">
+          <img 
+            src={`${import.meta.env.BASE_URL}logo.png`} 
+            alt="Xenaris Studios" 
+            className="h-12 md:h-16 lg:h-20 object-contain invert mix-blend-multiply opacity-90"
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = 'none';
+              (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+            }}
+          />
+          <span className="hidden text-xl md:text-2xl font-black tracking-tight text-[var(--color-text-light)]">
+            <span className="font-display italic">Xenaris</span>
+            <span className="font-sans font-medium text-[var(--color-accent)]">Studios</span>
+          </span>
         </Link>
 
         {/* Links */}

@@ -38,7 +38,15 @@ const Footer = () => {
 
       {/* Watermark / Logo at bottom */}
       <div className="max-w-7xl mx-auto mt-32 flex flex-col md:flex-row items-center justify-between border-t border-[var(--color-accent)]/20 pt-8 text-[var(--color-accent)] text-sm">
-        <p>© {new Date().getFullYear()} Xenaris Studios. All rights reserved.</p>
+        <div className="flex items-center gap-4">
+          <img 
+            src={`${import.meta.env.BASE_URL}logo.png`} 
+            alt="Xenaris Studios" 
+            className="h-10 md:h-12 object-contain opacity-80"
+            onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
+          />
+          <p>© {new Date().getFullYear()} Xenaris Studios. All rights reserved.</p>
+        </div>
         <p className="mt-4 md:mt-0">Rotterdam Inspired, Built for the World.</p>
       </div>
     </footer>
