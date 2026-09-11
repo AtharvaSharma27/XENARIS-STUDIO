@@ -1,20 +1,35 @@
 import { ArrowUp } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
-const Footer = () => {
+export default function Footer() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className="px-4 md:px-8 pb-4">
-      <footer className="bg-[var(--color-primary-dark)] text-white rounded-[32px] pt-16 pb-8 px-8 md:px-16 flex flex-col justify-between overflow-hidden relative">
+    <footer id="contact" className="bg-[var(--color-secondary)] px-6 md:px-12 pt-32 pb-8 min-h-screen flex flex-col border-t border-white/10">
+      <div className="max-w-7xl mx-auto w-full flex-grow flex flex-col justify-between">
         
-        <div className="max-w-screen-2xl mx-auto w-full flex flex-col relative z-10">
-          
-          {/* Top availability badge */}
-          <div className="flex items-center gap-3 text-sm font-medium mb-12">
-            <span className="px-3 py-1 border border-white/20 rounded-md font-bold bg-white text-[var(--color-primary-dark)]">3 places</span>
-            <span className="text-white/70">available for Q4</span>
+        <div className="flex flex-col">
+          {/* Top Row: Scarcity Badge & Clock */}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-24">
+            <div className="flex items-center gap-3">
+              <span className="bg-white text-black px-3 py-1 rounded-sm text-xs font-bold uppercase tracking-wider">
+                3 places
+              </span>
+              <span className="text-white/60 text-sm font-medium">available for Q4</span>
+            </div>
+            
+            <div className="text-white/60 font-medium font-mono text-sm">
+              Local Time: {time.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true })}
+            </div>
           </div>
 
           {/* Colossal Contact Link */}
@@ -23,6 +38,12 @@ const Footer = () => {
               +91 7710879175
             </a>
             <span className="text-white/60 font-medium tracking-wide">WhatsApp</span>
+          </div>
+
+          <div className="mb-12">
+            <a href="mailto:hey@xenaris.studio" className="text-2xl md:text-4xl lg:text-[4vw] font-bold tracking-tight hover:text-[var(--color-primary)] transition-colors inline-block font-display">
+              hey@xenaris.studio
+            </a>
           </div>
 
           {/* Meta Row */}
@@ -40,10 +61,11 @@ const Footer = () => {
             <div className="flex items-center gap-8">
               <a href="https://linkedin.com" className="hover:text-white transition-colors">LinkedIn</a>
               <a href="https://instagram.com/xenaris.studio" className="hover:text-white transition-colors">Instagram</a>
+              <a href="https://youtube.com" className="hover:text-white transition-colors">YouTube</a>
             </div>
 
-            <button onClick={scrollToTop} className="pill-badge-dark hover:bg-white/10 transition-colors cursor-pointer">
-              Back to top <ArrowUp size={16} />
+            <button onClick={scrollToTop} className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer group border border-white/20 rounded-full px-4 py-2 hover:bg-white/10">
+              Back to top <ArrowUp size={16} className="group-hover:-translate-y-1 transition-transform" />
             </button>
           </div>
 
@@ -53,11 +75,8 @@ const Footer = () => {
               Xenaris Studios
             </h1>
           </div>
-          
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
-};
-
-export default Footer;
+}

@@ -1,23 +1,26 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Services from "./pages/Services";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Hero from './components/sections/Hero';
+import About from './components/sections/About';
+import Work from './components/sections/Work';
+import Services from './components/sections/Services';
+import Testimonials from './components/sections/Testimonials';
+import FAQ from './components/sections/FAQ';
 
 function App() {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <div className="bg-[var(--color-secondary)] min-h-screen font-sans selection:bg-[var(--color-primary)] selection:text-black scroll-smooth">
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Work />
+        <Services />
+        <Testimonials />
+        <FAQ />
+      </main>
+      <Footer />
+    </div>
   );
 }
 
