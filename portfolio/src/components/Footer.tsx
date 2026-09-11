@@ -27,14 +27,14 @@ const Footer = () => {
 
           {/* Meta Row */}
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between text-sm text-white/60 font-medium mb-16 gap-6">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-4">
               <img 
                 src={`${import.meta.env.BASE_URL}logo.png`} 
                 alt="Xenaris Studios" 
-                className="h-8 object-contain"
+                className="h-16 md:h-20 object-contain opacity-90"
                 onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
               />
-              <p>© {new Date().getFullYear()} Xenaris Studios Rotterdam.</p>
+              <p>© {new Date().getFullYear()} Xenaris Studios.</p>
             </div>
             
             <div className="flex items-center gap-8">
@@ -48,8 +48,8 @@ const Footer = () => {
           </div>
 
           {/* Colossal Wordmark Base */}
-          <div className="w-full text-center mt-auto border-t border-white/10 pt-8">
-            <h1 className="text-[15vw] leading-none font-black tracking-tighter text-white opacity-90 select-none">
+          <div className="w-full text-center mt-auto border-t border-white/10 pt-8 overflow-hidden">
+            <h1 className="text-[12vw] leading-none font-black tracking-tighter text-white opacity-90 select-none whitespace-nowrap">
               Xenaris Studios
             </h1>
           </div>
