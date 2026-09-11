@@ -1,36 +1,43 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #00ff00; /* Neon Green */
-  --color-secondary: #0000ff; /* Electric Blue */
-  --color-accent: #ff00ff; /* Hot Pink */
+  --color-primary: #DCE6F5;
+  --color-secondary: #0D0C1D;
+  --color-accent: #9490A5;
   
-  --font-sans: "Space Grotesk", "Outfit", "Inter", sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
 }
 
 @layer base {
+  :root {
+    --color-primary: #DCE6F5; /* Ice Blue Light */
+    --color-primary-dark: #0D0C1D; /* Deep Plum Dark */
+    --color-accent: #9490A5; /* Muted Lavender */
+    --color-text-light: #0F0E17; /* Ink Black */
+    --color-text-dark: #F3F0FD; /* Off White */
+  }
+
   body {
-    @apply bg-black text-white font-sans antialiased overflow-x-hidden;
-    /* Basic noise texture overlay using CSS background */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-    background-blend-mode: overlay;
+    @apply font-sans antialiased bg-[var(--color-primary)] text-[var(--color-text-light)] overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+
+  ::selection {
+    background-color: var(--color-primary-dark);
+    color: var(--color-primary);
   }
 }
 
-/* Custom Scrollbar for a maximalist look */
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: #000;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border: 2px solid #000;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+/* Custom Utilities */
+@layer utilities {
+  .pill-badge {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-current text-sm font-medium;
+  }
+  .pill-badge::before {
+    content: "•";
+  }
 }

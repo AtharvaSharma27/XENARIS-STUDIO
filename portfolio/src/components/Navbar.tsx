@@ -1,52 +1,36 @@
-import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const location = useLocation();
-
-  const navLinks = [
-    { name: "HOME", path: "/" },
-    { name: "SERVICES", path: "/services" },
-  ];
-
   return (
-    <nav className="sticky top-0 z-50 w-full bg-black/80 backdrop-blur-md border-b-4 border-[var(--color-primary)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <Link to="/" className="flex-shrink-0 flex items-center group">
-            <span className="text-4xl font-bold tracking-tighter text-white group-hover:text-[var(--color-accent)] transition-colors duration-300 uppercase italic">
-              Xenaris
-            </span>
-            <span className="text-4xl font-bold tracking-tighter text-[var(--color-primary)] uppercase ml-2">
-              Studio
-            </span>
+    <nav className="fixed top-0 w-full z-50 bg-[var(--color-primary)]/80 backdrop-blur-md border-b border-[var(--color-accent)]/20 transition-all duration-300 px-6 py-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        
+        {/* Logo */}
+        <Link to="/" className="text-xl md:text-2xl font-black tracking-tight flex items-center gap-2 text-[var(--color-text-light)]">
+          <span className="font-display italic">Xenaris</span>
+          <span className="font-sans font-medium text-[var(--color-accent)]">Studios</span>
+        </Link>
+
+        {/* Links */}
+        <div className="hidden md:flex items-center gap-8">
+          <Link to="/" className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors">
+            Home
           </Link>
-          <div className="flex space-x-8">
-            {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
-              return (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className="relative group px-2 py-1"
-                >
-                  <span className={`text-xl font-bold tracking-wider uppercase transition-colors duration-300 ${isActive ? 'text-[var(--color-primary)]' : 'text-white group-hover:text-[var(--color-primary)]'}`}>
-                    {link.name}
-                  </span>
-                  {isActive && (
-                    <motion.div
-                      layoutId="underline"
-                      className="absolute bottom-0 left-0 w-full h-1 bg-[var(--color-primary)]"
-                    />
-                  )}
-                  {!isActive && (
-                    <div className="absolute bottom-0 left-0 w-0 h-1 bg-[var(--color-primary)] transition-all duration-300 group-hover:w-full" />
-                  )}
-                </Link>
-              );
-            })}
-          </div>
+          <Link to="/services" className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors">
+            Services
+          </Link>
         </div>
+
+        {/* CTA */}
+        <a 
+          href="https://wa.me/919833842643" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="pill-badge bg-[var(--color-text-light)] text-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] hover:scale-105 transition-all duration-300"
+        >
+          Let's talk
+        </a>
+
       </div>
     </nav>
   );

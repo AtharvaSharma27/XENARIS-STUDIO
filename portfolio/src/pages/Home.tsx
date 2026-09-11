@@ -1,78 +1,61 @@
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Marquee from "../components/Marquee";
 
 const Home = () => {
   return (
-    <div className="flex flex-col w-full pb-20 overflow-hidden">
+    <div className="flex flex-col w-full min-h-screen">
+      
       {/* HERO SECTION */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center items-center px-4 overflow-hidden pt-10">
-        <div className="absolute inset-0 flex justify-center items-center opacity-20 pointer-events-none">
-          <div className="w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] border-[10px] border-[var(--color-primary)] rounded-full absolute -top-20 -left-20 animate-pulse"></div>
-          <div className="w-[60vw] h-[60vw] max-w-[600px] max-h-[600px] bg-[var(--color-accent)] rounded-full absolute bottom-10 right-10 mix-blend-screen blur-[100px]"></div>
-          <div className="w-[70vw] h-[70vw] max-w-[700px] max-h-[700px] bg-[var(--color-secondary)] rounded-full absolute top-10 right-20 mix-blend-screen blur-[120px]"></div>
-        </div>
-
-        <div className="z-10 text-center max-w-6xl mx-auto flex flex-col items-center">
-          <h1 className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] font-black uppercase tracking-tighter leading-[0.85] text-white mix-blend-difference mb-8 drop-shadow-2xl">
-            I EDIT <span className="text-[var(--color-primary)] block">STORIES</span> & BUILD <span className="text-[var(--color-accent)] block transform -skew-x-12">WEBSITES</span>
+      <section className="pt-32 pb-16 px-6 sm:px-12 max-w-7xl mx-auto w-full flex flex-col justify-center items-center text-center min-h-[85vh]">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col items-center"
+        >
+          <span className="pill-badge border-[var(--color-text-light)] text-[var(--color-text-light)] mb-8">
+            Digital Design Studio
+          </span>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-medium tracking-tighter leading-[0.95] text-[var(--color-text-light)] mb-10 max-w-5xl">
+            Built to grow & <br className="hidden md:block"/> designed to stand out
           </h1>
-          
-          <Link 
-            to="/services" 
-            className="group relative inline-flex items-center justify-center px-12 py-6 text-3xl font-black uppercase tracking-widest text-black bg-[var(--color-primary)] border-4 border-black overflow-hidden transition-transform hover:scale-105 active:scale-95"
-          >
-            <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-[var(--color-accent)] rounded-full group-hover:w-[150%] group-hover:h-[400%]"></span>
-            <span className="relative flex items-center gap-4">
-              Explore Work
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 transform group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </span>
-          </Link>
-        </div>
+          <p className="text-lg md:text-xl text-[var(--color-text-light)]/80 max-w-2xl font-sans leading-relaxed">
+            Standing out isn't luck, it's craftsmanship. We edit stories and build websites that last, from concept to launch. After that, you can take it further yourself.
+          </p>
+        </motion.div>
       </section>
 
       {/* MARQUEE */}
-      <section className="mt-10 mb-32">
+      <div className="px-6 max-w-7xl mx-auto w-full">
         <Marquee />
-      </section>
+      </div>
 
-      {/* ABOUT ME */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
-        <div className="bg-[var(--color-secondary)] border-8 border-white p-8 md:p-16 lg:p-24 relative transform md:rotate-1">
-          <div className="absolute -top-10 -left-10 bg-[var(--color-primary)] text-black text-6xl md:text-8xl font-black p-4 border-4 border-black transform -rotate-12">
-            "
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold uppercase leading-tight tracking-tight text-white mix-blend-exclusion">
-            We help brands turn raw footage into <span className="text-[var(--color-primary)] bg-black px-2">scroll-stopping stories</span> and build <span className="text-[var(--color-accent)] bg-black px-2">high-converting websites</span>.
+      {/* ABOUT SECTION (Plum Background Transition) */}
+      <section className="w-full bg-[var(--color-primary-dark)] text-[var(--color-primary)] rounded-[3rem] px-6 sm:px-12 py-32 mt-12 mx-auto max-w-[95%]">
+        <div className="max-w-5xl mx-auto">
+          <span className="pill-badge border-[var(--color-accent)] text-[var(--color-accent)] mb-12">
+            About us, since 2024
+          </span>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-medium tracking-tight leading-[1.1] mb-12">
+            Xenaris Studios is a digital design agency focused on high-quality video editing and web development.
           </h2>
-          <div className="mt-12 flex justify-end">
-            <p className="text-2xl md:text-3xl font-bold uppercase tracking-widest bg-white text-black p-4 inline-block border-4 border-black">
-              — Xenaris Studio
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* STATS / HIGHLIGHTS */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          <div className="flex flex-col items-center justify-center p-12 bg-black border-4 border-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-black transition-colors group cursor-default">
-            <span className="text-7xl md:text-8xl font-black mb-4 group-hover:scale-110 transition-transform">100+</span>
-            <span className="text-2xl font-bold uppercase tracking-widest text-center">Videos Edited</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-[var(--color-accent)]/20 pt-12">
+            <div>
+              <h3 className="text-2xl font-sans font-medium mb-4">Direct Communication</h3>
+              <p className="text-[var(--color-accent)] text-lg leading-relaxed">
+                We work directly with you. No account manager layers. This allows for same-day decision making and a smoother creative process tailored to your specific needs.
+              </p>
+            </div>
+            <div className="flex flex-col gap-4 justify-center">
+              <a href="/services" className="text-xl font-medium flex items-center gap-4 hover:text-[var(--color-text-dark)] transition-colors">
+                <span className="text-[var(--color-accent)] text-sm">(01)</span> View our services
+              </a>
+              <a href="https://wa.me/919833842643" target="_blank" rel="noopener noreferrer" className="text-xl font-medium flex items-center gap-4 hover:text-[var(--color-text-dark)] transition-colors">
+                <span className="text-[var(--color-accent)] text-sm">(02)</span> Schedule a meeting
+              </a>
+            </div>
           </div>
-
-          <div className="flex flex-col items-center justify-center p-12 bg-black border-4 border-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-black transition-colors group cursor-default transform md:-translate-y-8">
-            <span className="text-7xl md:text-8xl font-black mb-4 group-hover:scale-110 transition-transform">50+</span>
-            <span className="text-2xl font-bold uppercase tracking-widest text-center">Websites Built</span>
-          </div>
-
-          <div className="flex flex-col items-center justify-center p-12 bg-black border-4 border-[var(--color-secondary)] hover:bg-[var(--color-secondary)] hover:text-white transition-colors group cursor-default">
-            <span className="text-7xl md:text-8xl font-black mb-4 group-hover:scale-110 transition-transform">24/7</span>
-            <span className="text-2xl font-bold uppercase tracking-widest text-center">Creative Energy</span>
-          </div>
-
         </div>
       </section>
 
