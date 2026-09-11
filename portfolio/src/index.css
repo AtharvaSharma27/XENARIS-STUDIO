@@ -1,11 +1,33 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'PP Mori';
+  src: url('/fonts/PPMori-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Mori';
+  src: url('/fonts/PPMori-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Mori';
+  src: url('/fonts/PPMori-Extrabold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-primary: #D8E3F5;
   --color-secondary: #0E0611;
   
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-sans: 'PP Mori', system-ui, -apple-system, sans-serif;
+  --font-display: 'PP Mori', system-ui, -apple-system, sans-serif;
 }
 
 @layer base {

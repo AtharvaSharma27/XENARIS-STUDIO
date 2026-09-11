@@ -16,12 +16,11 @@ const Home = () => {
         {/* Massive Headline */}
         <div className="text-center flex flex-col items-center justify-center max-w-5xl mx-auto mb-16">
           <h1 className="text-[var(--color-text-light)] text-center mb-8">
-            Built to grow &<br />
-            designed to stand<br />
-            out
+            We edit stories &<br />
+            build websites
           </h1>
           <p className="text-lg md:text-xl text-[var(--color-text-muted)] max-w-[600px] leading-relaxed">
-            We are a creative agency specializing in stunning, high-performance web experiences that elevate your brand and drive results.
+            At Xenaris Studio, we turn raw footage into scroll-stopping stories and build high-converting websites that work as hard as you do.
           </p>
         </div>
 

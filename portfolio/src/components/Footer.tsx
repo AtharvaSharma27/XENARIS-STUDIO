@@ -18,10 +18,11 @@ const Footer = () => {
           </div>
 
           {/* Colossal Contact Link */}
-          <div className="mb-24">
-            <a href="mailto:hey@xenaris.studio" className="text-4xl md:text-6xl lg:text-[7vw] font-black tracking-tighter hover:text-[var(--color-primary)] transition-colors inline-block font-display">
-              hey@xenaris.studio
+          <div className="mb-24 flex flex-col md:flex-row items-baseline gap-4 md:gap-12">
+            <a href="https://wa.me/917710879175" className="text-4xl md:text-6xl lg:text-[6vw] font-black tracking-tighter hover:text-[var(--color-primary)] transition-colors inline-block font-display">
+              +91 7710879175
             </a>
+            <span className="text-white/60 font-medium tracking-wide">WhatsApp</span>
           </div>
 
           {/* Meta Row */}

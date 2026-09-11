@@ -1,35 +1,35 @@
-import { Monitor, Smartphone, PenTool, Layout, Palette, Megaphone } from 'lucide-react';
+import { Film, Clapperboard, MonitorPlay, Palette, Layout, Smartphone } from 'lucide-react';
 
 const servicesList = [
   {
-    title: 'Web Development',
-    description: 'Lightning-fast, fully responsive websites built with modern frameworks to ensure scale and reliability.',
-    icon: <Monitor size={24} className="mb-6 opacity-70" />
+    title: 'Professional Video Editing',
+    description: 'Cinematic video editing and brand storytelling that helps you capture attention, build trust, and grow your audience.',
+    icon: <Film size={24} className="mb-6 opacity-70" />
   },
   {
-    title: 'Mobile Apps',
-    description: 'Native and cross-platform mobile applications designed to provide seamless experiences on any device.',
-    icon: <Smartphone size={24} className="mb-6 opacity-70" />
+    title: 'Reels, Shorts & Podcasts',
+    description: 'Short-form content designed to stop the scroll and turn viewers into loyal followers.',
+    icon: <Clapperboard size={24} className="mb-6 opacity-70" />
   },
   {
-    title: 'UI/UX Design',
-    description: 'User-centric interfaces that not only look beautiful but are intuitively crafted to drive conversions.',
-    icon: <PenTool size={24} className="mb-6 opacity-70" />
+    title: 'Motion Graphics',
+    description: 'Creative content and visual effects that bring your brand to life with dynamic motion.',
+    icon: <MonitorPlay size={24} className="mb-6 opacity-70" />
   },
   {
-    title: 'Brand Identity',
-    description: 'Comprehensive branding packages including logos, typography, and visual systems that tell your story.',
-    icon: <Palette size={24} className="mb-6 opacity-70" />
-  },
-  {
-    title: 'Product Strategy',
-    description: 'We align your business goals with user needs to define a roadmap for successful product launches.',
+    title: 'Responsive Web Development',
+    description: 'High-converting websites for businesses and creators, built fast and mobile-friendly.',
     icon: <Layout size={24} className="mb-6 opacity-70" />
   },
   {
-    title: 'Digital Marketing',
-    description: 'Data-driven campaigns to boost your online presence, reach the right audience, and grow your brand.',
-    icon: <Megaphone size={24} className="mb-6 opacity-70" />
+    title: 'UI/UX Design & Wireframing',
+    description: 'Custom website design tailored to provide seamless experiences and bring in enquiries.',
+    icon: <Palette size={24} className="mb-6 opacity-70" />
+  },
+  {
+    title: 'Product / Catalog Showcase',
+    description: 'Lead-generation focused builds that help businesses turn visitors into customers.',
+    icon: <Smartphone size={24} className="mb-6 opacity-70" />
   }
 ];
 
