@@ -42,7 +42,7 @@ const Footer = () => {
           <img 
             src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Xenaris Studios" 
-            className="h-10 md:h-12 object-contain opacity-80"
+            className="h-16 md:h-20 object-contain opacity-80"
             onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
           />
           <p>© {new Date().getFullYear()} Xenaris Studios. All rights reserved.</p>

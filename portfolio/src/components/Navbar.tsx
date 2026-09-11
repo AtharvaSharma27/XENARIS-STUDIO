@@ -10,7 +10,7 @@ const Navbar = () => {
           <img 
             src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Xenaris Studios" 
-            className="h-12 md:h-16 lg:h-20 object-contain invert mix-blend-multiply opacity-90"
+            className="h-16 md:h-24 lg:h-32 object-contain invert mix-blend-multiply opacity-90"
             onError={(e) => {
               (e.target as HTMLImageElement).style.display = 'none';
               (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
