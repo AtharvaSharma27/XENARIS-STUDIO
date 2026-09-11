@@ -1,46 +1,41 @@
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 w-full z-50 bg-[var(--color-primary)]/80 backdrop-blur-md border-b border-[var(--color-accent)]/20 transition-all duration-300 px-6 py-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <nav className="fixed w-full top-0 z-50 bg-[var(--color-primary)]/90 backdrop-blur-md py-6 px-4 md:px-8">
+      <div className="max-w-screen-2xl mx-auto flex items-center justify-between">
         
-        {/* Logo */}
+        {/* Left: Logo Mark */}
         <Link to="/" className="flex items-center">
           <img 
             src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Xenaris Studios" 
-            className="h-16 md:h-24 lg:h-32 object-contain invert mix-blend-multiply opacity-90"
+            className="h-10 md:h-12 lg:h-14 object-contain invert mix-blend-multiply opacity-90"
             onError={(e) => {
               (e.target as HTMLImageElement).style.display = 'none';
               (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
             }}
           />
-          <span className="hidden text-xl md:text-2xl font-black tracking-tight text-[var(--color-text-light)]">
-            <span className="font-display italic">Xenaris</span>
-            <span className="font-sans font-medium text-[var(--color-accent)]">Studios</span>
+          <span className="hidden text-xl font-bold tracking-tight text-[var(--color-text-light)]">
+            Xenaris
           </span>
         </Link>
 
-        {/* Links */}
-        <div className="hidden md:flex items-center gap-8">
-          <Link to="/" className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors">
-            Home
-          </Link>
-          <Link to="/services" className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors">
-            Services
-          </Link>
+        {/* Center: Links */}
+        <div className="hidden md:flex items-center gap-8 text-[var(--color-text-light)] font-medium">
+          <Link to="/" className="hover:opacity-70 transition-opacity">About us</Link>
+          <Link to="/services" className="hover:opacity-70 transition-opacity">Work</Link>
+          <Link to="/services" className="hover:opacity-70 transition-opacity">Services</Link>
         </div>
 
-        {/* CTA */}
-        <a 
-          href="https://wa.me/919833842643" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="pill-badge bg-[var(--color-text-light)] text-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] hover:scale-105 transition-all duration-300"
-        >
-          Let's talk
-        </a>
+        {/* Right: CTA Pill */}
+        <div className="flex items-center gap-4">
+          <a href="mailto:hey@xenaris.studio" className="bg-[var(--color-primary-dark)] text-white px-6 py-3 rounded-full text-sm font-medium hover:scale-105 transition-transform flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+            To collaborate
+          </a>
+        </div>
 
       </div>
     </nav>

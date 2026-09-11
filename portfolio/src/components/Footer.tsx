@@ -1,55 +1,62 @@
-import { ArrowUpRight } from "lucide-react";
+import React from 'react';
+import { ArrowUp } from 'lucide-react';
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="w-full bg-[var(--color-primary-dark)] text-[var(--color-primary)] py-20 px-6 sm:px-12 rounded-t-[3rem] mt-20 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col items-center text-center gap-12 relative z-10">
+    <div className="px-4 md:px-8 pb-4">
+      <footer className="bg-[var(--color-primary-dark)] text-white rounded-[32px] pt-16 pb-8 px-8 md:px-16 flex flex-col justify-between overflow-hidden relative">
         
-        {/* Large Text */}
-        <div className="flex flex-col items-center">
-          <span className="pill-badge border-[var(--color-accent)] text-[var(--color-accent)] mb-8">
-            Ready to collaborate?
-          </span>
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-medium tracking-tighter leading-[1.1] max-w-4xl">
-            Let's build something <br className="hidden md:block"/> extraordinary.
-          </h2>
-        </div>
+        <div className="max-w-screen-2xl mx-auto w-full flex flex-col relative z-10">
+          
+          {/* Top availability badge */}
+          <div className="flex items-center gap-3 text-sm font-medium mb-12">
+            <span className="px-3 py-1 border border-white/20 rounded-md font-bold bg-white text-[var(--color-primary-dark)]">3 places</span>
+            <span className="text-white/70">available for Q4</span>
+          </div>
 
-        {/* Links */}
-        <div className="flex flex-col md:flex-row gap-6 mt-8">
-          <a 
-            href="https://wa.me/919833842643" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 px-8 py-4 bg-[var(--color-primary)] text-[var(--color-primary-dark)] rounded-full font-medium hover:scale-105 transition-transform duration-300"
-          >
-            WhatsApp <ArrowUpRight size={20} />
-          </a>
-          <a 
-            href="https://www.instagram.com/xenaris.studio?stkn=MWo3bzQwZnFjaDNoaw==" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 px-8 py-4 border border-[var(--color-accent)] text-[var(--color-primary)] rounded-full font-medium hover:bg-white/10 transition-colors duration-300"
-          >
-            Instagram <ArrowUpRight size={20} />
-          </a>
-        </div>
-      </div>
+          {/* Colossal Contact Link */}
+          <div className="mb-24">
+            <a href="mailto:hey@xenaris.studio" className="text-4xl md:text-6xl lg:text-[7vw] font-black tracking-tighter hover:text-[var(--color-primary)] transition-colors inline-block font-display">
+              hey@xenaris.studio
+            </a>
+          </div>
 
-      {/* Watermark / Logo at bottom */}
-      <div className="max-w-7xl mx-auto mt-32 flex flex-col md:flex-row items-center justify-between border-t border-[var(--color-accent)]/20 pt-8 text-[var(--color-accent)] text-sm">
-        <div className="flex items-center gap-4">
-          <img 
-            src={`${import.meta.env.BASE_URL}logo.png`} 
-            alt="Xenaris Studios" 
-            className="h-16 md:h-20 object-contain opacity-80"
-            onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
-          />
-          <p>© {new Date().getFullYear()} Xenaris Studios. All rights reserved.</p>
+          {/* Meta Row */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between text-sm text-white/60 font-medium mb-16 gap-6">
+            <div className="flex items-center gap-2">
+              <img 
+                src={`${import.meta.env.BASE_URL}logo.png`} 
+                alt="Xenaris Studios" 
+                className="h-8 object-contain"
+                onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
+              />
+              <p>© {new Date().getFullYear()} Xenaris Studios Rotterdam.</p>
+            </div>
+            
+            <div className="flex items-center gap-8">
+              <a href="https://linkedin.com" className="hover:text-white transition-colors">LinkedIn</a>
+              <a href="https://instagram.com/xenaris.studio" className="hover:text-white transition-colors">Instagram</a>
+            </div>
+
+            <button onClick={scrollToTop} className="pill-badge-dark hover:bg-white/10 transition-colors cursor-pointer">
+              Back to top <ArrowUp size={16} />
+            </button>
+          </div>
+
+          {/* Colossal Wordmark Base */}
+          <div className="w-full text-center mt-auto border-t border-white/10 pt-8">
+            <h1 className="text-[15vw] leading-none font-black tracking-tighter text-white opacity-90 select-none">
+              Xenaris Studios
+            </h1>
+          </div>
+          
         </div>
-        <p className="mt-4 md:mt-0">Rotterdam Inspired, Built for the World.</p>
-      </div>
-    </footer>
+      </footer>
+    </div>
   );
 };
 

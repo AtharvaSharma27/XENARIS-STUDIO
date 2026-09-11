@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #DCE6F5;
-  --color-secondary: #0D0C1D;
-  --color-accent: #9490A5;
+  --color-primary: #D8E3F5;
+  --color-secondary: #0E0611;
   
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
@@ -11,19 +10,33 @@
 
 @layer base {
   :root {
-    --color-primary: #DCE6F5; /* Ice Blue Light */
-    --color-primary-dark: #0D0C1D; /* Deep Plum Dark */
-    --color-accent: #9490A5; /* Muted Lavender */
-    --color-text-light: #0F0E17; /* Ink Black */
-    --color-text-dark: #F3F0FD; /* Off White */
+    --color-primary: #D8E3F5; /* Soft Ice Blue/Periwinkle */
+    --color-primary-dark: #0E0611; /* Deep Eggplant / Dark Plum */
+    --color-text-light: #13091B; /* Dark Ink */
+    --color-text-dark: #FFFFFF; /* White */
+    --color-text-muted: #5E5B6A; /* Muted subtext */
   }
 
   body {
     @apply font-sans antialiased bg-[var(--color-primary)] text-[var(--color-text-light)] overflow-x-hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  /* Extreme Typography Scaling */
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
+  }
+  
+  h2 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    letter-spacing: -0.02em;
   }
 
   ::selection {
@@ -35,9 +48,9 @@
 /* Custom Utilities */
 @layer utilities {
   .pill-badge {
-    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-current text-sm font-medium;
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--color-text-light)] text-sm font-medium;
   }
-  .pill-badge::before {
-    content: "•";
+  .pill-badge-dark {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 text-white text-sm font-medium;
   }
 }
