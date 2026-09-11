@@ -1,4 +1,3 @@
-import React from 'react';
 import { Monitor, Smartphone, PenTool, Layout, Palette, Megaphone } from 'lucide-react';
 
 const servicesList = [

@@ -1,6 +1,4 @@
-import React from 'react';
-import { ArrowDownRight, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowDownRight } from 'lucide-react';
 
 const Home = () => {
   return (
