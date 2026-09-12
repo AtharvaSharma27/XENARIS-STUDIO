@@ -65,7 +65,7 @@ export default function Footer() {
 
           {/* Colossal Wordmark Base */}
           <div className="w-full text-center mt-auto border-t border-white/10 pt-8 overflow-hidden">
-            <h1 className="text-[12vw] leading-none font-black tracking-tighter text-white opacity-90 select-none whitespace-nowrap">
+            <h1 className="text-[10vw] md:text-[12vw] leading-none font-black tracking-tighter text-white opacity-90 select-none whitespace-nowrap">
               Xenaris Studios
             </h1>
           </div>

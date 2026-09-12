@@ -56,7 +56,7 @@ export default function Services() {
                 We craft digital experiences that capture attention and drive growth. Here is how we can help your brand stand out.
               </p>
               
-              <a href="#contact" className="inline-flex items-center gap-3 px-8 py-4 bg-[#111111] text-white rounded-full font-medium hover:scale-105 transition-transform duration-300 shadow-xl">
+              <a href="https://wa.me/919833842643" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-8 py-4 bg-[#111111] text-white rounded-full font-medium hover:scale-105 transition-transform duration-300 shadow-xl">
                 Contact us
                 <ArrowUpRight className="w-5 h-5" />
               </a>
