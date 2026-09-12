@@ -2,54 +2,44 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-16 relative">
-      <div className="max-w-6xl mx-auto w-full">
+    <section id="hero" className="min-h-screen flex flex-col justify-center px-6 md:px-12 pt-32 pb-16 relative overflow-hidden">
+      {/* Background Shapes */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute top-1/4 -left-1/4 w-[150%] h-[150%] fill-white/60">
+          <path d="M0,50 C30,20 70,80 100,50 L100,100 L0,100 Z" />
+        </svg>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute -top-1/4 right-0 w-[100%] h-[150%] fill-white/40">
+          <path d="M50,0 C80,30 20,70 50,100 L100,100 L100,0 Z" />
+        </svg>
+      </div>
+
+      <div className="max-w-6xl mx-auto w-full relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col items-center text-center"
         >
-          {/* Eyebrow Label & Scarcity Badge */}
-          <div className="flex flex-col items-center gap-4 mb-8">
-            <span className="text-[var(--color-text-muted)] tracking-wider uppercase text-sm font-medium">
+          {/* Eyebrow Label */}
+          <div className="mb-8">
+            <div className="px-4 py-1.5 rounded-full border border-current opacity-70 text-xs font-semibold tracking-wide">
               Video Editing & Web Development Studio
-            </span>
-            <div className="bg-white/10 px-4 py-2 rounded-full border border-white/20">
-              <span className="text-white text-sm font-semibold tracking-wide">
-                3 slots available this month
-              </span>
             </div>
           </div>
 
           {/* Huge Headline */}
-          <h1 className="text-[var(--color-text-light)] text-center mb-8 font-display leading-[0.9] tracking-tighter" style={{ fontSize: 'clamp(4rem, 10vw, 12rem)' }}>
-            Built to Get Watched.<br />
-            Designed to Convert.
+          <h1 className="text-center mb-8 font-display leading-[0.95] tracking-tighter" style={{ fontSize: 'clamp(3.5rem, 9vw, 11rem)' }}>
+            Built to get watched.<br />
+            Designed to convert.
           </h1>
 
           {/* Subtext */}
-          <p className="text-lg md:text-2xl text-[var(--color-text-muted)] max-w-3xl leading-relaxed mb-16">
-            We turn raw footage into scroll-stopping stories and build high-converting websites that work as hard as you do.
+          <p className="text-lg md:text-xl max-w-2xl leading-relaxed font-medium opacity-70">
+            Great content isn't luck, it's craft. We edit videos and build websites that capture attention, from first cut to final launch. After that, it's all yours to run.
           </p>
-
-          {/* Numbered CTAs */}
-          <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 text-[var(--color-text-muted)] font-medium">
-            <a href="#work" className="hover:text-white transition-colors flex items-center gap-2 group">
-              <span className="text-sm opacity-50">(01)</span>
-              <span className="group-hover:underline underline-offset-4 decoration-white/30">See Our Work</span>
-            </a>
-            <a href="#services" className="hover:text-white transition-colors flex items-center gap-2 group">
-              <span className="text-sm opacity-50">(02)</span>
-              <span className="group-hover:underline underline-offset-4 decoration-white/30">Our Services</span>
-            </a>
-            <a href="#contact" className="hover:text-white transition-colors flex items-center gap-2 group">
-              <span className="text-sm opacity-50">(03)</span>
-              <span className="group-hover:underline underline-offset-4 decoration-white/30">Book a Call</span>
-            </a>
-          </div>
         </motion.div>
       </div>
+
     </section>
   );
 }

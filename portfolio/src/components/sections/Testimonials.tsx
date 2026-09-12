@@ -37,26 +37,40 @@ export default function Testimonials() {
   const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="py-24 px-6 md:px-12 bg-black">
-      <div className="max-w-4xl mx-auto text-center">
+    <section className="py-32 px-4 md:px-8 bg-white relative overflow-hidden flex justify-center">
+      {/* Huge Background Watermark Marquee */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 whitespace-nowrap text-[#D8E3F5] font-display font-black text-[35vw] leading-none opacity-60 pointer-events-none select-none z-0 overflow-hidden w-full">
+        <motion.div
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
+          className="flex whitespace-nowrap w-fit"
+        >
+          <span className="px-8">Xenaris Studio</span>
+          <span className="px-8">Xenaris Studio</span>
+          <span className="px-8">Xenaris Studio</span>
+          <span className="px-8">Xenaris Studio</span>
+        </motion.div>
+      </div>
+
+      <div className="max-w-5xl w-full mx-auto text-center bg-[#0E0611] text-white rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-16 lg:p-24 relative z-10 shadow-2xl">
         <div className="flex items-center justify-center gap-4 mb-16">
-          <div className="w-2 h-2 rounded-full bg-[var(--color-primary)]" />
-          <span className="text-[var(--color-text-muted)] tracking-wider uppercase text-sm font-medium">
-            Client Words
+          <div className="w-2 h-2 rounded-full bg-white" />
+          <span className="opacity-70 tracking-wider uppercase text-sm font-medium">
+            What customers say
           </span>
         </div>
 
-        <div className="relative min-h-[300px]">
+        <div className="relative min-h-[300px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center max-w-3xl mx-auto"
             >
-              <p className="text-2xl md:text-4xl font-display leading-tight mb-12">
+              <p className="text-2xl md:text-3xl lg:text-4xl font-display leading-tight mb-12 font-medium">
                 "{testimonials[currentIndex].quote}"
               </p>
               
@@ -64,18 +78,18 @@ export default function Testimonials() {
                 <img 
                   src={testimonials[currentIndex].image} 
                   alt={testimonials[currentIndex].name}
-                  className="w-16 h-16 rounded-full object-cover grayscale opacity-80"
+                  className="w-14 h-14 rounded-full object-cover"
                 />
                 <div className="text-left">
-                  <div className="font-bold text-white">{testimonials[currentIndex].name}</div>
-                  <div className="text-sm text-white/50">{testimonials[currentIndex].role}</div>
+                  <div className="font-bold">{testimonials[currentIndex].name}</div>
+                  <div className="text-sm opacity-50">{testimonials[currentIndex].role}</div>
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        <div className="flex justify-center gap-4 mt-12">
+        <div className="flex justify-center gap-4 mt-16">
           <button onClick={prev} className="p-3 rounded-full border border-white/20 hover:bg-white/10 transition-colors">
             <ArrowLeft size={20} />
           </button>

@@ -1,67 +1,48 @@
 import { ArrowUp } from 'lucide-react';
-import { useState, useEffect } from 'react';
 
 export default function Footer() {
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer id="contact" className="bg-[var(--color-secondary)] px-6 md:px-12 pt-32 pb-8 min-h-screen flex flex-col border-t border-white/10">
-      <div className="max-w-7xl mx-auto w-full flex-grow flex flex-col justify-between">
-        
-        <div className="flex flex-col">
-          {/* Top Row: Scarcity Badge & Clock */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-24">
-            <div className="flex items-center gap-3">
-              <span className="bg-white text-black px-3 py-1 rounded-sm text-xs font-bold uppercase tracking-wider">
-                3 places
-              </span>
-              <span className="text-white/60 text-sm font-medium">available for Q4</span>
-            </div>
-            
-            <div className="text-white/60 font-medium font-mono text-sm">
-              Local Time: {time.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true })}
-            </div>
-          </div>
-
-          {/* Colossal Contact Link */}
-          <div className="mb-24 flex flex-col md:flex-row items-baseline gap-4 md:gap-12">
-            <a href="https://wa.me/917710879175" className="text-4xl md:text-6xl lg:text-[6vw] font-black tracking-tighter hover:text-[var(--color-primary)] transition-colors inline-block font-display">
-              +91 7710879175
-            </a>
-            <span className="text-white/60 font-medium tracking-wide">WhatsApp</span>
-          </div>
-
-          <div className="mb-12">
-            <a href="mailto:hey@xenaris.studio" className="text-2xl md:text-4xl lg:text-[4vw] font-bold tracking-tight hover:text-[var(--color-primary)] transition-colors inline-block font-display">
-              hey@xenaris.studio
+    <footer id="contact" className="bg-white px-4 md:px-8 pb-4 md:pb-8 flex flex-col">
+      <div className="bg-[#0E0611] text-white rounded-[2.5rem] md:rounded-[4rem] px-8 md:px-16 pt-24 pb-8 flex-grow flex flex-col justify-between shadow-2xl relative overflow-hidden max-w-[95rem] mx-auto w-full">
+        <div className="max-w-7xl mx-auto w-full flex flex-col flex-grow relative z-10">
+          <div className="mb-32">
+            <a href="mailto:mayuresh@xenaris.studio" className="text-3xl md:text-5xl lg:text-[5vw] font-medium tracking-tight hover:text-[#D8E3F5] transition-colors inline-block font-display text-white">
+              mayuresh@xenaris.studio
             </a>
           </div>
 
           {/* Meta Row */}
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between text-sm text-white/60 font-medium mb-16 gap-6">
             <div className="flex items-center gap-4">
-              <img 
-                src={`${import.meta.env.BASE_URL}logo.png`} 
-                alt="Xenaris Studios" 
-                className="h-16 md:h-20 object-contain opacity-90"
-                onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
-              />
-              <p>© {new Date().getFullYear()} Xenaris Studios.</p>
+              <p className="text-white">© {new Date().getFullYear()} Xenaris Studios.</p>
             </div>
             
             <div className="flex items-center gap-8">
-              <a href="https://linkedin.com" className="hover:text-white transition-colors">LinkedIn</a>
-              <a href="https://instagram.com/xenaris.studio" className="hover:text-white transition-colors">Instagram</a>
-              <a href="https://youtube.com" className="hover:text-white transition-colors">YouTube</a>
+              <img 
+                src={`${import.meta.env.BASE_URL}logo.png`} 
+                alt="Xenaris Studios" 
+                className="h-8 md:h-10 object-contain opacity-90 filter invert"
+                onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
+              />
+              <a href="https://wa.me/919833842643" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M11.996 2C6.476 2 2 6.476 2 11.996c0 1.756.46 3.46 1.332 4.966L2 22l5.176-1.31A9.957 9.957 0 0 0 11.996 22c5.518 0 9.996-4.478 9.996-9.996C21.992 6.476 17.514 2 11.996 2z"/>
+                </svg>
+                WhatsApp
+              </a>
+              <a href="https://instagram.com/xenaris.studio" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                Instagram
+              </a>
+              <a href="https://youtube.com/@xenarisvideoediting?si=Irc0c0YgUbDDdb7t" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+                YouTube
+              </a>
             </div>
 
             <button onClick={scrollToTop} className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer group border border-white/20 rounded-full px-4 py-2 hover:bg-white/10">

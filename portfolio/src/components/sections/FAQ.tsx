@@ -29,11 +29,11 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-24 px-6 md:px-12 border-t border-white/10">
+    <section className="py-24 px-6 md:px-12 border-t border-current transition-colors opacity-90">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-4 mb-16">
-          <div className="w-2 h-2 rounded-full bg-[var(--color-primary)]" />
-          <span className="text-[var(--color-text-muted)] tracking-wider uppercase text-sm font-medium">
+          <div className="w-2 h-2 rounded-full bg-current" />
+          <span className="opacity-70 tracking-wider uppercase text-sm font-medium">
             Questions
           </span>
         </div>
@@ -42,7 +42,7 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className="border border-white/10 rounded-xl overflow-hidden bg-white/5 hover:bg-white/10 transition-colors"
+              className="border border-current/20 rounded-xl overflow-hidden bg-current/5 hover:bg-current/10 transition-colors"
             >
               <button 
                 onClick={() => toggle(index)}
@@ -51,7 +51,7 @@ export default function FAQ() {
                 <span className="text-xl md:text-2xl font-display font-bold pr-8">
                   {faq.question}
                 </span>
-                <span className="flex-shrink-0 text-[var(--color-primary)]">
+                <span className="flex-shrink-0 opacity-70">
                   {openIndex === index ? <Minus size={24} /> : <Plus size={24} />}
                 </span>
               </button>
@@ -64,7 +64,7 @@ export default function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="px-6 md:px-8 pb-8 text-[var(--color-text-muted)] text-lg leading-relaxed">
+                    <div className="px-6 md:px-8 pb-8 opacity-70 text-lg leading-relaxed">
                       {faq.answer}
                     </div>
                   </motion.div>

@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
@@ -29,68 +30,108 @@ const projects = [
 ];
 
 export default function Work() {
-  return (
-    <section id="work" className="py-24 px-6 md:px-12 bg-[#0a040d]">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="mb-16"
-        >
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-2 h-2 rounded-full bg-[var(--color-primary)]" />
-            <span className="text-[var(--color-text-muted)] tracking-wider uppercase text-sm font-medium">
-              Selected Work
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-6xl font-display font-bold">
-            Featured Projects
-          </h2>
-        </motion.div>
+  const [isHovered, setIsHovered] = useState(false);
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  
+  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+  useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX - 50); // Center the 100px wide cursor
+      cursorY.set(e.clientY - 50);
+    };
+
+    window.addEventListener('mousemove', moveCursor);
+    return () => {
+      window.removeEventListener('mousemove', moveCursor);
+    };
+  }, [cursorX, cursorY]);
+
+  return (
+    <section id="work" className="py-32 px-6 md:px-12 transition-colors relative z-10 cursor-default">
+      
+      {/* Custom Cursor */}
+      <motion.div
+        style={{
+          x: cursorXSpring,
+          y: cursorYSpring,
+        }}
+        animate={{
+          scale: isHovered ? 1 : 0,
+          opacity: isHovered ? 1 : 0,
+        }}
+        transition={{ duration: 0.2 }}
+        className="fixed top-0 left-0 w-[100px] h-[100px] bg-[#111111] text-white rounded-full pointer-events-none z-50 flex items-center justify-center font-medium text-sm tracking-wide shadow-xl"
+      >
+        View
+      </motion.div>
+
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 relative">
+        
+        {/* Sticky Sidebar */}
+        <div className="lg:w-1/3 relative">
+          <div className="sticky top-32">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight mb-6">
+                Selected Work
+              </h2>
+              <p className="text-lg opacity-70 max-w-sm">
+                A collection of recent projects spanning video production, web development, and brand strategy.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Scrollable Project List */}
+        <div className="lg:w-2/3 flex flex-col gap-24 lg:gap-32">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: index * 0.1 }}
-              className="group cursor-pointer"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="group cursor-none flex flex-col"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
             >
-              <div className="relative overflow-hidden rounded-xl mb-6 aspect-video bg-white/5">
+              <div className="relative overflow-hidden rounded-[2rem] mb-8 bg-current/5 w-full aspect-[4/3] md:aspect-[16/10]">
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
-                
-                {/* Category Badge overlay */}
-                <div className="absolute top-4 left-4">
-                  <span className="bg-black/50 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full font-medium tracking-wide uppercase">
-                    {project.category}
-                  </span>
-                </div>
-                
-                {/* Hover reveal icon */}
-                <div className="absolute top-4 right-4 w-12 h-12 bg-white text-black rounded-full flex items-center justify-center opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  <ArrowUpRight size={24} />
-                </div>
               </div>
               
-              <h3 className="text-2xl font-bold font-display mb-2 group-hover:text-[var(--color-primary)] transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-[var(--color-text-muted)]">
-                {project.description}
-              </p>
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                  <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-current opacity-70 text-sm font-medium w-fit mb-4 transition-colors duration-300 group-hover:bg-[#111111] group-hover:text-white group-hover:border-[#111111]">
+                    {project.category}
+                  </div>
+                  
+                  <h3 className="text-3xl md:text-4xl font-display font-medium leading-tight transition-transform duration-500 ease-out group-hover:-translate-y-1 flex items-center gap-3">
+                    {project.title}
+                    <ArrowUpRight className="opacity-0 -translate-x-4 translate-y-4 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500 ease-out w-8 h-8" />
+                  </h3>
+                </div>
+                
+                <p className="opacity-70 max-w-xs md:text-right text-lg">
+                  {project.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

@@ -7,9 +7,31 @@ import Services from './components/sections/Services';
 import Testimonials from './components/sections/Testimonials';
 import FAQ from './components/sections/FAQ';
 
+import { motion, useScroll, useTransform } from 'framer-motion';
+
 function App() {
+  const { scrollY } = useScroll();
+  // 0 - 400: Light Blue (Hero)
+  // 600 - 1400: Dark Plum (About)
+  // 1600+: Off-White / Light (Work & beyond)
+  const backgroundColor = useTransform(
+    scrollY, 
+    [0, 400, 600, 1400, 1600], 
+    ['#D8E3F5', '#D8E3F5', '#0E0611', '#0E0611', '#ffffff']
+  );
+  
+  // Corresponding text color transitions
+  const color = useTransform(
+    scrollY, 
+    [0, 400, 600, 1400, 1600], 
+    ['#13091B', '#13091B', '#FFFFFF', '#FFFFFF', '#13091B']
+  );
+
   return (
-    <div className="bg-[var(--color-secondary)] min-h-screen font-sans selection:bg-[var(--color-primary)] selection:text-black scroll-smooth">
+    <motion.div 
+      style={{ backgroundColor, color }}
+      className="min-h-screen font-sans selection:bg-black selection:text-white scroll-smooth transition-colors duration-0"
+    >
       <Navbar />
       <main>
         <Hero />
@@ -20,7 +42,7 @@ function App() {
         <FAQ />
       </main>
       <Footer />
-    </div>
+    </motion.div>
   );
 }
 
